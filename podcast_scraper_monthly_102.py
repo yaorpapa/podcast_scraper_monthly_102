@@ -40,6 +40,11 @@ CREATE TABLE IF NOT EXISTS {table_name} (
 ''')
 conn.commit()
 
+# 開啟 RLS（消除 Supabase Dashboard 警告，postgres 角色會繞過此限制）
+cursor.execute(f"ALTER TABLE {table_name} ENABLE ROW LEVEL SECURITY;")
+conn.commit()
+print(f"資料表 {table_name} 已開啟 Row Level Security")
+
 # 更新序列的值，以避免重複主鍵問題
 cursor.execute(f"SELECT setval('{table_name}_id_seq', COALESCE((SELECT MAX(id) FROM {table_name}) + 1, 1), false);")
 conn.commit()
