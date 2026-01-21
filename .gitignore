@@ -1,0 +1,9 @@
+# 備份檔案 - 包含敏感的 genre mapping
+podcast_scraper_monthly_102_backup.py
+
+# 敏感資料 - GitHub Secret 內容
+GENRE_MAPPING_SECRET.json
+
+# 本地設定檔
+*.local
+.env.local

@@ -30,5 +30,6 @@ jobs:
       - name: Run scrapers
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          GENRE_MAPPING: ${{ secrets.GENRE_MAPPING }}
         run: |
           python podcast_scraper_monthly_102.py
